@@ -1,0 +1,11 @@
+.header__container {
+    padding: 2% 4% 2% 4%;
+    background-color: #1A253C;
+}
+.inner__container {
+    padding-bottom: 1%;
+    align-items: center;
+    display: flex;
+    border-bottom: 1px solid #303F60;
+    justify-content: space-between;
+}
