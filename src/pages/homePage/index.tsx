@@ -1,21 +1,18 @@
-import React from 'react'
-import Header from '../../components/Header/Header'
-import BaseLayout from '../../components/BaseLayout'
-import Companies from '../../components/Companies'
-import './styles.css'
+import React from 'react';
+import Header from '../../components/Header';
+import BaseLayout from '../../components/BaseLayout';
+import Companies from '../../components/Companies';
+import './styles.css';
+import WhyUs from '../../components/WhyUs';
 
-function HomePage() {
+const HomePage = (): JSX.Element => {
   return (
-    <BaseLayout> 
-            <Header/>
-      <div>
-        this is test
-      </div>
-
+    <BaseLayout>
+      <Header />
+      <WhyUs />
       <Companies />
-
     </BaseLayout>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
