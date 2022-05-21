@@ -1,0 +1,18 @@
+.company__title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #303F60;
+    margin-left: 2%;
+}
+.companies {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+.companies > .company {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 2%;
+}
