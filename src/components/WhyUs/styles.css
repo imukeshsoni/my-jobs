@@ -1,0 +1,11 @@
+.whyus__title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #303F60;
+}
+
+.card__container {
+    padding: 2% 0;
+    display: flex;
+    justify-content: space-between;
+}
