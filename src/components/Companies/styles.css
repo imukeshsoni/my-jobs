@@ -2,12 +2,12 @@
     font-size: 22px;
     font-weight: 500;
     color: #303F60;
-    margin-left: 2%;
+    margin-bottom: 30px;
 }
 .companies {
     display: flex;
     flex-wrap: wrap;
-    align-content: space-around;
+    align-content: space-between;
 }
 .companies > .company {
     width: 100%;

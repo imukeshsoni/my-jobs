@@ -14,11 +14,10 @@
   top: 45%;
   transform: translate(-50%, -50%);
   border-radius: 20px;
-  width: 500px;
+  width: 400px;
   background-color: white;
 }
-.input > input {
-  height: 40px;
+.form > .input > input {
   font-size: 14px;
   margin: 5px 0;
   width: 100%;
@@ -28,10 +27,34 @@
   background-color: #e8e8e833;
   opacity: 0.4;
 }
+.form > .input {
+  margin-top: 10px;
+}
 .create__password {
   display: grid;
   grid-auto-flow: column;
+  width: 100%;
 }
+.form {
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.create__password > .input > input {
+  height: 30px;
+  font-size: 14px;
+  width: 80%;
+  padding: 3%;
+  border-radius: 5px;
+  border: 1px solid;
+  background-color: #e8e8e833;
+  opacity: 0.4;
+}
+.text-danger {
+  color: #FF0000;
+}
+
 .generic__container > .generic__wrapper > .form > .forgot__password {
   display: flex;
   font-size: 14px;
@@ -54,10 +77,6 @@
   display: flex;
   flex-direction: column;
 }
-.generic__container > .generic__wrapper > .form > label {
-  margin-top: 10px;
-  font-size: 14px;
-}
 .label {
   margin-top: 10px;
   font-size: 14px;
@@ -71,7 +90,7 @@
   height: 200px;
   background-color: #1a253c;
 }
-.fragment-2 {
+.generic__container > .fragment-2 {
   display: block;
   background-color: #edf6ff;
   height: 400px;
