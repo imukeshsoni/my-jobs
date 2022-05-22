@@ -1,0 +1,20 @@
+.fragment-1 {
+    height: 200px;
+    background-color: #1a253c;
+  }
+  .fragment-2 {
+    display: block;
+    background-color: #EDF6FF;
+    height: 700px;
+  }
+  .wrapper {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10% 0 15%;
+    position: absolute;
+    top: 15%;
+    margin-right: 20px;
+    width: 70%;
+  }
+  
