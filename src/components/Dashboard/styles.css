@@ -3,6 +3,7 @@
 }
 .job__listing {
     display: flex;
+    height: 500px;
     flex-wrap: wrap;
     flex-direction: column;
     position: relative;
