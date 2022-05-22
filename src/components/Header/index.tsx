@@ -6,11 +6,22 @@ import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 
 interface Props {
-  children?: React.ReactNode;
+  showLogin?: boolean;
+  buttonText?: string;
 }
 
-const Header: FC<Props> = ({ children }) => {
+const Header: FC<Props> = ({
+  showLogin = true,
+  buttonText = 'Login/Signup',
+}) => {
   const handleLogin = () => {};
+
+  const btn: JSX.Element = (
+    <Link to="/login">
+      <Button variant="outlined">{buttonText}</Button>
+    </Link>
+  );
+
   return (
     <>
       <div className="header__container">
@@ -18,9 +29,7 @@ const Header: FC<Props> = ({ children }) => {
           <Link to="/">
             <img src={logo} alt="" />
           </Link>
-          <Link to="/login">
-            <Button variant="outlined">Login/Signup</Button>
-          </Link>
+          {showLogin ? btn : ''}
         </div>
       </div>
     </>
