@@ -19,9 +19,10 @@ function SignUp(): JSX.Element {
       <GenericComponent>
         <h2>Signup</h2>
         <form action="" className="form" onSubmit={() => handleSubmit()}>
-          <label htmlFor="name">Full Name*</label>
-
           <div className="input">
+            <label className="label" htmlFor="name">
+              Full Name*
+            </label>
             <input
               type="text"
               name="name"
@@ -31,9 +32,11 @@ function SignUp(): JSX.Element {
               onChange={(e) => setName(e.target.value)}
             />
           </div>
-          <label htmlFor="email">Email Address*</label>
 
           <div className="input">
+            <label className="label" htmlFor="email">
+              Email Address*
+            </label>
             <input
               type="email"
               name="email"
@@ -43,7 +46,7 @@ function SignUp(): JSX.Element {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <div className="create__password">
+          <div className="create__password input">
             <div className="input">
               <label className="label" htmlFor="password">
                 Create Password*
@@ -91,7 +94,7 @@ function SignUp(): JSX.Element {
             </Button>
           </div>
           <div className="form__footer">
-            <span>
+            <span className="label">
               Have an account?
               <a href="/login" className="link">
                 &nbsp;Login
