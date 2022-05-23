@@ -17,19 +17,6 @@
   width: 400px;
   background-color: white;
 }
-.form > .input > input {
-  font-size: 14px;
-  margin: 5px 0;
-  width: 100%;
-  padding: 3%;
-  border-radius: 5px;
-  border: 1px solid;
-  background-color: #e8e8e833;
-  opacity: 0.4;
-}
-.form > .input {
-  margin-top: 10px;
-}
 .create__password {
   display: grid;
   grid-auto-flow: column;
@@ -41,16 +28,6 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.create__password > .input > input {
-  height: 30px;
-  font-size: 14px;
-  width: 80%;
-  padding: 3%;
-  border-radius: 5px;
-  border: 1px solid;
-  background-color: #e8e8e833;
-  opacity: 0.4;
-}
 .text-danger {
   color: #FF0000;
 }
@@ -58,7 +35,7 @@
 .generic__container > .generic__wrapper > .form > .forgot__password {
   display: flex;
   font-size: 14px;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 .generic__container > .generic__wrapper > .form > .btn__container {
   display: flex;
