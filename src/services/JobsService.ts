@@ -14,6 +14,9 @@ export class JobService {
         return AxiosConfig.get(`/recruiters/jobs`, config);
     }
     getCandidates(jobId: string) {
-
+        const config = {
+            headers: {Authorization: `${this.token}`}
+        };
+        return AxiosConfig.get(`/recruiters/jobs/${jobId}/candidates`, config);
     }
 }

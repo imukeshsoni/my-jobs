@@ -20,15 +20,25 @@ export class AuthService {
                 resolve();
             } catch (err: any) {
                 if (err.response && err.response.status === 401) {
-                    reject('UnAuthorized request')
+                    reject(err)
                 }
             }
 
         })
     }
-    isAuthenticated() {
-        const user = this.storageService.getItem('token');
+    logoutUser() {
+        this.storageService.clearStorage();
+    }
+    getUserData() {
+        const user = this.storageService.getItem('user');
         if(user) {
+            return user;
+        }
+        return null;
+    }
+    isAuthenticated() {
+        const token = this.storageService.getItem('token');
+        if(token) {
             return true;
         }
         return false;
