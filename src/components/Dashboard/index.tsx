@@ -1,6 +1,7 @@
 import {
   Avatar,
   Box,
+  Breadcrumbs,
   Button,
   Card,
   CardActions,
@@ -14,6 +15,7 @@ import {
   Grid,
   IconButton,
   Pagination,
+  Stack,
   TextField,
   Typography,
 } from '@mui/material';
@@ -30,6 +32,7 @@ import home from '../../assets/home.svg';
 import location from '../../assets/location.svg';
 import nocandidates from '../../assets/no-candidates.svg';
 import writing from '../../assets/writing.svg';
+import PostJob from '../PostJob';
 
 interface Job {
   id: string;
@@ -52,14 +55,10 @@ function Dashboard() {
   const [page, setPage] = useState(1);
   const [postedJobs, setPostedJobs] = useState<Array<Job>>([]);
   const [jobCandidates, setJobCandidates] = useState<Array<Candidate>>([]);
-  const [jobTitle, setJobTitle] = useState<string>('');
-  const [jobDescription, setJobDescription] = useState('');
-  const [jobLocation, setJobLocation] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const [open, setOpen] = React.useState(false);
   const [showCandidates, setShowCandidates] = useState(false);
 
-  const PER_PAGE = 6;
+  const PER_PAGE = 9;
 
   const count = Math.ceil(postedJobs.length / PER_PAGE);
   const _DATA = usePagination(postedJobs, PER_PAGE);
@@ -97,11 +96,6 @@ function Dashboard() {
   };
 
   const handleClose = (validate: boolean = true) => {
-    if (validate && (!jobDescription || !jobTitle || !jobLocation)) {
-      setErrorMessage('All fields are required');
-      return;
-    }
-    setErrorMessage('');
     setOpen(false);
   };
 
@@ -114,13 +108,24 @@ function Dashboard() {
     <React.Fragment>
       <Header />
       <BaseLayout>
-        <div className="dashboard__description">
-          <Link className="link" to="/dashboard">
-            <img src={home} />
-            <span> Home</span>
-          </Link>
-          <h1>Jobs Posted by you</h1>
-        </div>
+        <Stack spacing={2}>
+          <div className="dashboard__description">
+            <Breadcrumbs separator="›" aria-label="breadcrumb">
+              <Link className="link" to="/dashboard">
+                <img src={home} />
+                <span> Home</span>
+              </Link>
+            </Breadcrumbs>
+            <Breadcrumbs separator="-" aria-label="breadcrumb">
+              <Button className="link" onClick={() => handleClickOpen()}>
+                Post a job
+              </Button>
+            </Breadcrumbs>
+
+            {/* <Button>Post a job</Button> */}
+            <h1>Jobs Posted by you</h1>
+          </div>
+        </Stack>
         <Box sx={{}}>
           <Grid
             container
@@ -172,87 +177,15 @@ function Dashboard() {
                   <Button variant="contained" onClick={handleClickOpen}>
                     Post a job
                   </Button>
-                  <Dialog open={open} onClose={() => handleClose()}>
-                    <DialogTitle>
-                      Post a job
-                      {open ? (
-                        <IconButton
-                          aria-label="close"
-                          onClick={() => handleClose(false)}
-                          sx={{
-                            width: 45,
-                            position: 'absolute',
-                            right: 8,
-                            top: 8,
-                            color: (theme) => theme.palette.grey[500],
-                          }}
-                        >
-                          x
-                        </IconButton>
-                      ) : null}
-                    </DialogTitle>
-                    <DialogContent>
-                      <form>
-                        <TextField
-                          size="small"
-                          margin="normal"
-                          id="jobTitle"
-                          label="Job title"
-                          type="text"
-                          fullWidth
-                          error={errorMessage !== ''}
-                          value={jobTitle}
-                          onChange={(e) => setJobTitle(e.target.value)}
-                          required
-                          variant="outlined"
-                        />
-
-                        <TextField
-                          id="jobDescription"
-                          label="Job Description"
-                          margin="normal"
-                          multiline
-                          fullWidth
-                          error={errorMessage !== ''}
-                          required
-                          maxRows={10}
-                          value={jobDescription}
-                          onChange={(e) => setJobDescription(e.target.value)}
-                        />
-
-                        <TextField
-                          size="small"
-                          margin="normal"
-                          id="jobLocation"
-                          label="Location"
-                          type="text"
-                          fullWidth
-                          error={errorMessage !== ''}
-                          value={jobLocation}
-                          onChange={(e) => setJobLocation(e.target.value)}
-                          required
-                          variant="outlined"
-                        />
-                        <span className="text-danger label">
-                          {errorMessage}
-                        </span>
-                        <div className="btn__container">
-                          <Button
-                            variant="contained"
-                            type="submit"
-                            onClick={() => handleClose()}
-                          >
-                            Post Job
-                          </Button>
-                        </div>
-                      </form>
-                    </DialogContent>
-                  </Dialog>
                 </div>
               </div>
             )}
           </Grid>
         </Box>
+
+        <Dialog open={open} onClose={() => handleClose()}>
+          <PostJob />
+        </Dialog>
 
         <Dialog
           open={showCandidates}
