@@ -19,6 +19,13 @@
     align-items: center;
     justify-content: center;
 }
+.job__location {
+    font-size: 14px;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
 .btn__container {
     margin-top: 30px;
     align-items: center;
@@ -26,10 +33,11 @@
     flex-direction: column;
     justify-content: center;
 }
-.test {
-    width: 1000px;
+.pagination {
+    width: 80%;
     display: flex;
-    grid-template-columns: 300px ;
-  grid-gap: 10px;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 70%;
 }
