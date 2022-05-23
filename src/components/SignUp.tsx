@@ -1,11 +1,15 @@
-import { Button } from '@mui/material';
+import { Avatar, Button, Chip, Stack, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import GenericComponent from './Generic';
 import Header from './Header';
+import candidate from '../assets/candidate.svg';
+import recruiter from '../assets/recruiter.svg';
 
 function SignUp(): JSX.Element {
-  const handleSubmit = () => {};
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+  };
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,75 +22,90 @@ function SignUp(): JSX.Element {
       <Header showLogin={false} />
       <GenericComponent>
         <h2>Signup</h2>
-        <form action="" className="form" onSubmit={() => handleSubmit()}>
-          <div className="input">
-            <label className="label" htmlFor="name">
-              Full Name*
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={name}
-              required
-              placeholder="Enter your full name"
-              onChange={(e) => setName(e.target.value)}
+        <form action="" className="form" onSubmit={(e) => handleSubmit(e)}>
+          <span className="label">I'm a*</span>
+          <Stack direction="row" marginY={1} spacing={1}>
+            <Chip
+              icon={<img src={recruiter} />}
+              label="Recruiter"
+              variant="filled"
+              color="primary"
+              sx={{ height: 40, padding: 2, borderRadius: 1 }}
             />
-          </div>
+            <Chip
+              icon={<img src={candidate} />}
+              label="Candidate"
+              variant="outlined"
+              sx={{ height: 40, padding: 2, borderRadius: 1 }}
+            />
+          </Stack>
+          <TextField
+            size="small"
+            margin="normal"
+            type="text"
+            name="name"
+            value={name}
+            required
+            fullWidth
+            label="Full Name"
+            variant="outlined"
+            placeholder="Enter your full name"
+            onChange={(e) => setName(e.target.value)}
+          />
 
-          <div className="input">
-            <label className="label" htmlFor="email">
-              Email Address*
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={email}
+          <TextField
+            size="small"
+            margin="normal"
+            variant="outlined"
+            fullWidth
+            label="Email Address"
+            type="email"
+            name="email"
+            value={email}
+            required
+            placeholder="Enter your email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <div className="create__password">
+            <TextField
+              size="small"
+              margin="normal"
+              variant="outlined"
+              label="Create Password"
+              fullWidth
+              type="password"
+              name="password"
+              value={password}
               required
-              placeholder="Enter your email"
-              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <TextField
+              size="small"
+              margin="normal"
+              variant="outlined"
+              label="Confirm Password"
+              fullWidth
+              type="password"
+              name="confirmPassword"
+              value={confirmPassword}
+              required
+              placeholder="Confirm your password"
+              onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-          <div className="create__password input">
-            <div className="input">
-              <label className="label" htmlFor="password">
-                Create Password*
-              </label>
-              <input
-                type="password"
-                name="password"
-                value={password}
-                required
-                placeholder="Enter your password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className="input">
-              <label className="label" htmlFor="confirmPassword">
-                Confirm Password*
-              </label>
-              <input
-                type="password"
-                name="confirmPassword"
-                value={confirmPassword}
-                required
-                placeholder="Confirm your password"
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className="input">
-            <label className="label" htmlFor="skills">
-              Skills*
-            </label>
-            <input
-              type="skills"
-              name="skills"
-              value={skills}
-              required
-              placeholder="Enter comma separated skills"
-              onChange={(e) => setSkills(e.target.value)}
-            />
-          </div>
+          <TextField
+            size="small"
+            margin="normal"
+            variant="outlined"
+            label="Skills"
+            fullWidth
+            type="skills"
+            name="skills"
+            value={skills}
+            placeholder="Enter comma separated skills"
+            onChange={(e) => setSkills(e.target.value)}
+          />
           <div className="btn__container">
             <Button variant="contained" type="submit">
               {' '}
