@@ -356,17 +356,18 @@ function Dashboard() {
             </Grid>
           </DialogContent>
         </Dialog>
-
-        <div className="pagination">
-          <Pagination
-            count={count}
-            size="large"
-            page={page}
-            variant="outlined"
-            shape="rounded"
-            onChange={handlePageChange}
-          />
-        </div>
+        {_DATA.currentData().length > 0 ? (
+          <div className="pagination">
+            <Pagination
+              count={count}
+              size="large"
+              page={page}
+              variant="outlined"
+              shape="rounded"
+              onChange={handlePageChange}
+            />
+          </div>
+        ) : null}
       </BaseLayout>
     </React.Fragment>
   );
