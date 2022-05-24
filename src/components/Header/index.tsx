@@ -41,6 +41,8 @@ const Header: FC<Props> = ({
 
   const handleLogout = () => {
     authService.logoutUser();
+    setIsLoggedIn(false);
+    closeMenu();
     navigate('/');
   };
 

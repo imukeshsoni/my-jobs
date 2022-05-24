@@ -89,7 +89,6 @@ function Dashboard() {
         if (res?.data && res?.data?.data?.length > 0) {
           setJobCandidates(res.data.data);
         } else if (res) {
-          console.log(res);
         }
         setShowCandidates(true);
       })
