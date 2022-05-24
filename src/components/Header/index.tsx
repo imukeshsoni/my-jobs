@@ -51,9 +51,9 @@ const Header: FC<Props> = ({
   };
 
   const btn: JSX.Element = (
-    <Link to="/login">
-      <Button variant="outlined">{buttonText}</Button>
-    </Link>
+    <Button onClick={() => navigate('/login')} variant="outlined">
+      {buttonText}
+    </Button>
   );
 
   return (
