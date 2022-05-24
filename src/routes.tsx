@@ -4,7 +4,7 @@ import ForgotPassword from './components/ForgotPassword';
 import SignUp from './components/SignUp';
 import HomePage from './pages/homePage';
 import LoginPage from './components/Login';
-import Dashboard from './components/Dashboard/index';
+import Dashboard from './pages/Dashboard/index';
 import ResetPassword from './components/ResetPassword';
 
 const BaseRouter = () => {

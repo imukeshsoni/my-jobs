@@ -19,10 +19,11 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+// import Link  from '@mui/material/Link';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import BaseLayout from '../BaseLayout';
-import Header from '../Header';
+import BaseLayout from '../../components/BaseLayout';
+import Header from '../../components/Header';
 import './styles.css';
 import { JobService } from '../../services/JobsService';
 import { StorageService } from '../../services/StorageService';
@@ -32,7 +33,7 @@ import home from '../../assets/home.svg';
 import location from '../../assets/location.svg';
 import nocandidates from '../../assets/no-candidates.svg';
 import writing from '../../assets/writing.svg';
-import PostJob from '../PostJob';
+import PostJob from '../../components/PostJob';
 
 interface Job {
   id: string;
@@ -108,24 +109,30 @@ function Dashboard() {
     <React.Fragment>
       <Header />
       <BaseLayout>
-        <Stack spacing={2}>
-          <div className="dashboard__description">
-            <Breadcrumbs separator="›" aria-label="breadcrumb">
-              <Link className="link" to="/dashboard">
-                <img src={home} />
-                <span> Home</span>
-              </Link>
-            </Breadcrumbs>
-            <Breadcrumbs separator="-" aria-label="breadcrumb">
-              <Button className="link" onClick={() => handleClickOpen()}>
-                Post a job
-              </Button>
-            </Breadcrumbs>
+        <Breadcrumbs
+          sx={{ color: '#fff' }}
+          separator="›"
+          aria-label="breadcrumb"
+        >
+          <Link className="link" to="/dashboard">
+            <img src={home} />
+            <span> Home</span>
+          </Link>
 
-            {/* <Button>Post a job</Button> */}
-            <h1>Jobs Posted by you</h1>
-          </div>
-        </Stack>
+          <Link to="" className="link" onClick={handleClickOpen}>
+            Post a job
+          </Link>
+        </Breadcrumbs>
+        {/* <Breadcrumbs separator="-" aria-label="breadcrumb">
+
+          <Button className="link" onClick={() => handleClickOpen()}>
+            Post a job
+          </Button>
+        </Breadcrumbs> */}
+        <div className="dashboard__description">
+          {/* <Button>Post a job</Button> */}
+          <h1>Jobs Posted by you</h1>
+        </div>
         <Box sx={{}}>
           <Grid
             container

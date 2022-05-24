@@ -1,4 +1,4 @@
-import { Avatar, Button, Menu, MenuItem } from '@mui/material';
+import { Avatar, Button, Dialog, Menu, MenuItem } from '@mui/material';
 import React, { FC, useEffect, useState } from 'react';
 import './styles.css';
 
@@ -6,6 +6,7 @@ import logo from '../../assets/logo.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthService } from '../../services/AuthService';
 import { StorageService } from '../../services/StorageService';
+import PostJob from '../PostJob';
 
 interface Props {
   showLogin?: boolean;
@@ -21,6 +22,7 @@ const Header: FC<Props> = ({
   const [userName, setUserName] = useState<string>('');
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [openPostJob, setOpenPostJob] = useState<boolean>(false);
   const openMenu = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
     setAnchorEl(event.currentTarget);
@@ -42,6 +44,10 @@ const Header: FC<Props> = ({
     navigate('/');
   };
 
+  const handlePostJob = () => {
+    setOpenPostJob(true);
+  };
+
   const btn: JSX.Element = (
     <Link to="/login">
       <Button variant="outlined">{buttonText}</Button>
@@ -57,7 +63,16 @@ const Header: FC<Props> = ({
           </Link>
           <span>
             {isLoggedIn ? (
-              <Avatar onClick={(e) => handleClick(e)}>{userName[0]}</Avatar>
+              <div className="buttons">
+                <Button
+                  onClick={() => {
+                    handlePostJob();
+                  }}
+                >
+                  Post a job
+                </Button>
+                <Avatar onClick={(e) => handleClick(e)}>{userName[0]}</Avatar>
+              </div>
             ) : showLogin ? (
               btn
             ) : (
@@ -77,6 +92,16 @@ const Header: FC<Props> = ({
           </Menu>
         </div>
       </div>
+      <Dialog
+        open={openPostJob}
+        onClose={() => {
+          setOpenPostJob(false);
+        }}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <PostJob />
+      </Dialog>
     </>
   );
 };

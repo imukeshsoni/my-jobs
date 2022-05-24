@@ -9,3 +9,8 @@
     border-bottom: 1px solid #303F60;
     justify-content: space-between;
 }
+.buttons {
+    display: flex;
+    width: 200px;
+    justify-content: space-evenly;
+}
